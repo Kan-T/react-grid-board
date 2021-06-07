@@ -1,32 +1,37 @@
 import React from "react";
 
 export interface BoardProps {
-	display?: 'grid' | 'inline-grid';
-  gridTemplateColumns: string;
-  gridTemplateRows: string;
-  columnGap: string;
-  rowGap: string;
-  justifyItems: 'start'|'end'|'center'|'stretch';
-  alignItems: 'start'|'end'|'center'|'stretch';
-  justifyContent: 'start'|'end'|'center'|'stretch'|'space-around'|'space-between'|'space-evenly';
+  boardStyle?: React.CSSProperties;
+  children: React.ReactNode;
 }
 
-const defaultBoardStyle = {
-  display:'grid',
-  gridTemplateColumns: '160px',
-  gridTemplateRows: '160px',
-  columnGap: '6px',
-  rowGap: '6px',
+const defaultBoardStyle: React.CSSProperties = {
+  width: '820px',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fill, 160px)',
+  gridTemplateRows: 'repeat(auto-fill, 160px)',
+  columnGap: '5px',
+  rowGap: '5px',
   justifyItems: 'center',
   alignItems: 'center',
-}
+  justifyContent: 'center',
+  alignContent: 'start',
+};
 
 export function Board (props: BoardProps) {
   const {
-    boardStyle,
-
+    boardStyle = {},
+    children
   } = props;
 
-  const boardContainerStyle: React. = 
+  const boardContainerStyle = {
+    ...defaultBoardStyle,
+    ...boardStyle
+  };
 
+  return (
+    <div style={boardContainerStyle}>
+      {children}
+    </div>
+  )
 }

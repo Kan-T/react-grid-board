@@ -1,7 +1,16 @@
 {
   "extends": [
-    "react-app"
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
   ],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "amd": true,
+    "commonjs": true,
+    "node": true
+  },
   "plugins": [
     "react-hooks",
     "@typescript-eslint"
