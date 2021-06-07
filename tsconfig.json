@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist",
+      "module": "ES6",    // 指定生成哪个模块系统代码: "None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"
+      "target": "ES6",    // 指定 ES 目标版本，默认 ES3
+      "jsx": "react",    // 在 .tsx 文件里支持 jsx
+      "declaration": true,    // 生成相应的 .d.ts 文件
+      "removeComments": true,    // 删除所有注释，除了以 /!* 开头的版权信息。
+      "strict": true,
+      "strictPropertyInitialization": false,
+      "forceConsistentCasingInFileNames": true,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": false,
+      "lib": ["es2019", "DOM"],
+      "declarationDir": "es",
+      "allowJs": false,
+      "checkJs": false,
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true
+    },
+    "include": [
+      "src/**/*",
+    ],
+    "exclude": [
+      "node_modules",
+      "**/*.spec.(ts|tsx)",
+      "dist"
+    ]
+  }

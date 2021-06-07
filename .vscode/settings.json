@@ -1,0 +1,11 @@
+{
+  "prettier.jsxSingleQuote": false,
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "es5",
+  "prettier.printWidth": 120,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}

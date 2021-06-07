@@ -1,0 +1,47 @@
+{
+  "name": "react-grid-board",
+  "version": "0.0.1",
+  "description": "react grid board",
+  "main": "index.js",
+  "author": "Kan Tao",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run dev",
+    "pub": "npm run build && npm publish",
+    "build": "set NODE_ENV=production && webpack --config ./config/webpack.config.prod.js",
+    "dev": "webpack-dev-server --config ./config/webpack.config.dev.js",
+    "test": "jest",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "autoprefixer": "^10.2.6",
+    "css-loader": "^5.2.6",
+    "eslint": "^7.28.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^1.6.0",
+    "postcss-import": "^14.0.2",
+    "postcss-loader": "^5.3.0",
+    "pre-commit": "^1.2.2",
+    "sass-loader": "^12.0.0",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  }
+}
