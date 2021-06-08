@@ -1,8 +1,14 @@
 {
   "name": "react-grid-board",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.0",
   "description": "react grid board",
   "main": "index.js",
+  "files": [
+    "dist",
+    "LICENSE",
+    "index.js"
+  ],
+  "typings": "dist/index.d.ts",
   "author": "Kan Tao",
   "license": "MIT",
   "scripts": {
@@ -42,7 +48,7 @@
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.2",
     "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.0",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3"
   }

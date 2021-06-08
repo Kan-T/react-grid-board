@@ -12,7 +12,7 @@
       "noFallthroughCasesInSwitch": true,
       "noImplicitAny": false,
       "lib": ["es2019", "DOM"],
-      "declarationDir": "es",
+      "declarationDir": "dist",
       "allowJs": false,
       "checkJs": false,
       "moduleResolution": "node",
@@ -20,7 +20,7 @@
       "allowSyntheticDefaultImports": true
     },
     "include": [
-      "src/**/*",
+      "src/**/*"
     ],
     "exclude": [
       "node_modules",
