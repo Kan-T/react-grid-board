@@ -1,6 +1,6 @@
 import React from "react";
-// import {Board} from "../../index.js";
-import {Board} from "..";
+import {Board} from "../../index.js";
+// import {Board} from "..";
 
 export default function App() {
   return (
