@@ -18,7 +18,7 @@ const defaultBoardStyle: React.CSSProperties = {
   alignContent: "start"
 };
 
-export function Board (props: BoardProps) {
+export function Board(props: BoardProps): React.ReactElement {
   const {
     boardStyle = {},
     children
