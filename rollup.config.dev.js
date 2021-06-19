@@ -12,7 +12,7 @@ import autoprefixer from "autoprefixer";
 import sass from "node-sass";
 
 export default {
-  input: "src/sample/index.tsx",
+  input: "sample/index.tsx",
   output: {
     file: "public/build/js/sample.bundle.js",
     format: "cjs"
