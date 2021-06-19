@@ -7,14 +7,24 @@ import eslint from "@rollup/plugin-eslint";
 import serve from "rollup-plugin-serve"; // 本地服务器
 import livereload from "rollup-plugin-livereload"; // 热更新插件
 import globals from "rollup-plugin-node-globals"; // React uses process.env.NODE_ENV. This plugin inserts node globals
+import postcss from "rollup-plugin-postcss";
+import autoprefixer from "autoprefixer";
+import sass from "node-sass";
 
 export default {
   input: "src/sample/index.tsx",
   output: {
-    file: "build/js/sample.bundle.js",
+    file: "public/build/js/sample.bundle.js",
     format: "cjs"
   },
   plugins: [
+    postcss({
+      plugins: [autoprefixer],
+      extensions: ["css", "scss"],
+      process: (context) => sass.render({
+        file: context
+      })
+    }),
     json(),
     nodeResolve(), //for importing from node_modules
     commonjs(), //Turn CommonJS modules to ES2015 modules
@@ -27,10 +37,10 @@ export default {
     livereload(),
     serve({
       open: true,
-      contentBase: "build",
+      contentBase: ["public"],
       host: "localhost",
       port: 10001
     })
   ],
-  external: ["lodash"]
+  external: []
 };
