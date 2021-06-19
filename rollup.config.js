@@ -5,6 +5,8 @@ import babel from "rollup-plugin-babel";
 import typescript from "rollup-plugin-typescript2";
 import eslint from "@rollup/plugin-eslint";
 import globals from "rollup-plugin-node-globals"; // React uses process.env.NODE_ENV. This plugin inserts node globals
+import postcss from "rollup-plugin-postcss"; // Process css files. Also need to install postcss.
+// import path from "path";
 
 export default {
   input: "src/index.ts",
@@ -13,6 +15,7 @@ export default {
     format: "esm"
   },
   plugins: [
+    postcss({}),
     json(),
     nodeResolve(), //for importing from node_modules
     commonjs(), //Turn CommonJS modules to ES2015 modules
@@ -23,5 +26,5 @@ export default {
       exclude: "node_modules/**" // 只编译我们的源代码
     })
   ],
-  external: ["lodash"]
+  external: []
 };
