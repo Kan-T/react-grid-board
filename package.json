@@ -19,10 +19,9 @@
     "lint": "eslint .",
     "lint-fix": "eslint . --fix"
   },
-  "pre-commit": [
-    "lint"
-  ],
   "dependencies": {
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.20",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -32,6 +31,8 @@
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
     "@rollup/plugin-eslint": "^8.0.1",
+    "@types/classnames": "^2.3.1",
+    "@types/lodash": "^4.14.170",
     "@types/react": "^17.0.9",
     "@types/react-dom": "^17.0.6",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
