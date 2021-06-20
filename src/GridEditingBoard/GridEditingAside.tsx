@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import classnames from "classnames";
 import { GridConfig, SetBoardConfig, SetItemConfig, RemoveItemConfig, ItemConfig } from "../GridBoard/interfaces";
 import { ItemForm } from "./ItemForm";
+const { useState } = React;
 const prefix = "grid-board";
 
 export interface GridEditingAsideProps {

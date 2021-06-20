@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import { GridBoard, ItemsConfig } from "../../src";
 import Item1 from "./item1";
 import Item2 from "./item2";
 import Item3 from "./item3";
+const {useState} = React;
 
 const itemsConfig: ItemsConfig = {
   "1623299311750": {

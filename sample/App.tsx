@@ -1,5 +1,5 @@
 import React from "react";
-import Story from "./GridBoardExample";
+import Story from "./GridEditingBoardExample";
 
 export default function App(): React.ReactElement {
   return (

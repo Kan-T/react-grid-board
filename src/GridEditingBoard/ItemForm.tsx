@@ -1,5 +1,6 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React from "react";
 import { ItemConfig, SetItemConfig, RemoveItemConfig } from "../GridBoard/interfaces";
+const { useState, useMemo, useEffect } = React;
 const prefix = "grid-board";
 
 export interface ItemFormProps {

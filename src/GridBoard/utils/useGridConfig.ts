@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React from "react";
 import { GridConfig, BoardConfig, ItemConfig, SetGridConfig, SetBoardConfig, SetItemConfig, RemoveItemConfig } from "../interfaces";
 // import { get, set } from "lodash";
 import get from "lodash/get";
 import set from "lodash/set";
+const { useState } = React;
 
 export function useGridConfig(initialConfig: GridConfig): [
   GridConfig,

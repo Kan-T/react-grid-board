@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { GridBoard, GridConfig } from "..";
 import { GridEditingAside } from "./GridEditingAside";
 import { useGridConfig } from "../GridBoard/utils";
 import "../style";
+const { useState } = React;
 const prefix = "grid-board";
 
 export interface GridEditingBoardProps {
