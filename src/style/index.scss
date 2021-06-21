@@ -1,7 +1,9 @@
-$prefix: 'grid-board';
+$prefix: "grid-board";
+$px-5: "5";
+$color-active: #0097ba;
 
 #grid-board-filer {
-	flex-grow: 1;	
+	flex-grow: 1;
 }
 
 .#{$prefix}-grid-board {
@@ -33,7 +35,7 @@ $prefix: 'grid-board';
 		background-color: rgb(175, 175, 175);
 		flex: 0 0 400px;
 		margin-bottom: -1px;
-		margin-left: 10px;
+		margin-right: 10px;
 		margin-top: -1px;
 		padding: 5px;
 	}
@@ -41,58 +43,80 @@ $prefix: 'grid-board';
 	.#{$prefix}-editing-aside-nav {
 		display: flex;
 		justify-content: space-around;
-		padding: 5px;
-		width: 100%;
+		padding: #{$px-5}px;
+		padding-bottom: 0;
+		width: calc(100% - 2*#{$px-5}px);
 		
 		.#{$prefix}-tab {
 			display: flex;
 			font-weight: 600;
 			justify-content: center;
-			margin-bottom: 4px;
+			margin-bottom: 0px;
 			padding-bottom: 6px;
 			width: 180px;
 		}
 
 		.#{$prefix}-tab-active {
-			border-bottom: solid 4px #0097ba;
-			color: #0097ba;
+			border-bottom: solid 4px #{$color-active};
+			color: #{$color-active};
 			font-weight: 600;
 			width: 180px;
 		}
 	}
 
 	.#{$prefix}-form {
-		padding-bottom: 5px;
-		padding-left: 5px;
-		padding-right: 5px;
-		padding-top: 10px;
-		width: 100%;
+		padding: #{$px-5}px;
+		width: calc(100% - 2*#{$px-5}px);
+		min-height: 292px;
+		border-top: solid 1px #fff;
+	}
 	
+	.#{$prefix}-form,
+	.#{$prefix}-container {
 		section {
 			align-items: center;
 			display: flex;
 			height: 46px;
 			margin-bottom: 10px;
 			width: 100%;
-
+	
 			select {
 				width: 100%;
+				height: 40px;
 			}
-
+	
 			&.backward {
 				justify-content: flex-end;
 			}
-
+	
 			>label {
 				flex-basis: 195px;
 				margin: 0;
 			}
-
+	
 			button {
+				width: 150px;
+				height: 40px;
 				margin-left: 20px;
-				width: 100px;
+				background-color: rgba(255,255,255,0);
+				border: solid 2px rgb(80, 80, 80);
+	
+				&:hover {
+					color: #{$color-active};
+					border: solid 2px #{$color-active};
+				}
+	
+				&:active {
+					color: #fff;
+					background-color: #{$color-active};
+					border: solid 2px #fff;
+				}
+
+				&.w-100 {
+					width: 100%;
+					margin: 0;
+				}
 			}
 		}
-		
 	}
 }

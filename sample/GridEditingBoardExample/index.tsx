@@ -13,15 +13,16 @@ const components = {
 
 export default function Story(): React.ReactElement {
   const config = JSON.parse(sessionStorage.getItem("GridEditingBoardExample_config")) || {};
-  // const setConfig = config => {
-  //   sessionStorage.setItem("GridEditingBoardExample_config", JSON.stringify(config));
-  // };
+  const setConfig = config => {
+    sessionStorage.setItem("GridEditingBoardExample_config", JSON.stringify(config));
+  };
 
   return (
     <>
       <GridEditingBoard
         initialConfig={config}
         components={components}
+        setConfig={setConfig}
       />
     </>
   );

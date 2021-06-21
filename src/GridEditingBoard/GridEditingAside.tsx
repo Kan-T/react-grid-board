@@ -1,12 +1,13 @@
 import React from "react";
 import classnames from "classnames";
-import { GridConfig, SetBoardConfig, SetItemConfig, RemoveItemConfig, ItemConfig } from "../GridBoard/interfaces";
+import { GridConfig, SetGridConfig, SetBoardConfig, SetItemConfig, RemoveItemConfig, ItemConfig } from "../GridBoard/interfaces";
 import { ItemForm } from "./ItemForm";
 const { useState } = React;
 const prefix = "grid-board";
 
 export interface GridEditingAsideProps {
   gridConfig: GridConfig;
+  setConfig?: SetGridConfig;
   setBoardConfig: SetBoardConfig;
   setItemConfig: SetItemConfig;
   removeItemConfig: RemoveItemConfig;
@@ -24,6 +25,7 @@ const emptyItemConfig: ItemConfig = {
 export function GridEditingAside(props: GridEditingAsideProps): React.ReactElement {
   const {
     gridConfig,
+    setConfig,
     setBoardConfig,
     setItemConfig,
     removeItemConfig,
@@ -52,6 +54,10 @@ export function GridEditingAside(props: GridEditingAsideProps): React.ReactEleme
 
   const addHandler = () => {
     setEditItemId(new Date().getTime().toString());
+  };
+
+  const saveConfigHandler = () => {
+    setConfig && setConfig(gridConfig);
   };
 
   return (
@@ -107,18 +113,29 @@ export function GridEditingAside(props: GridEditingAsideProps): React.ReactEleme
               Add new item
             </button>
           </section>
+          {
+            editItemId &&
+            <ItemForm
+              itemId={editItemId}
+              itemConfig={itemsConfig[editItemId] || emptyItemConfig}
+              setItemConfig={setItemConfig}
+              components={components}
+              removeItemConfig={removeItemConfig}
+            />
+          }
         </div>
       }
-      {
-        editType === "itemConfig" && editItemId &&
-        <ItemForm
-          itemId={editItemId}
-          itemConfig={itemsConfig[editItemId] || emptyItemConfig}
-          setItemConfig={setItemConfig}
-          components={components}
-          removeItemConfig={removeItemConfig}
-        />
-      }
+
+      <div className={`${prefix}-container`}>
+        <section className="backward">
+          <button
+            className="w-100"
+            onClick={saveConfigHandler}
+          >
+            Save the board
+          </button>
+        </section>
+      </div>
     </aside>
   );
 }
