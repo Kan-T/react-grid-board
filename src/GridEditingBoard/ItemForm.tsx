@@ -1,7 +1,6 @@
 import React from "react";
 import { ItemConfig, SetItemConfig, RemoveItemConfig } from "../GridBoard/interfaces";
 const { useState, useMemo, useEffect } = React;
-const prefix = "grid-board";
 
 export interface ItemFormProps {
   itemId: string;
@@ -22,7 +21,7 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
   } = props;
 
   const {
-    compName,
+    compName = "",
     style = {}
   } = itemConfig;
 
@@ -87,25 +86,17 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
   };
 
   return (
-    <div id="item" className={`${prefix}-form`}>
+    <>
       <section>
-        {/* <Select
-          preValueText="Widget: "
-          options={compOptions}
-          onChange={compChange}
-          value={{
-            label: componentName,
-            value: componentName
-          }}
-        /> */}
         <select
           id="component-select"
-          placeholder="Please select a widget..."
+          value={componentName}
           onChange={compChange}
         >
+          <option value="" disabled style={{display: "none"}}>Please select a widget...</option>
           {
             compOptions.map(name => (
-              <option key={`component-select-option-${name}`} value={name} selected={name === componentName}>name</option>
+              <option key={`component-select-option-${name}`} value={name}>{name}</option>
             ))
           }
         </select>
@@ -130,9 +121,9 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
         <button
           onClick={saveHandler}
         >
-          Save
+          Save item
         </button>
       </section>
-    </div>
+    </>
   );
 }
