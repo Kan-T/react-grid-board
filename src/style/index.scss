@@ -9,17 +9,27 @@ $color-active: #0097ba;
 .#{$prefix}-grid-board {
 	position: relative;
 
-	.#{$prefix}-grid-edit {
+	.#{$prefix}-item-edit {
 		border: solid 1px rgb(175, 175, 175);
 		margin: -1px;
-		padding: 0;
 	}
-
+	
 	.#{$prefix}-grid-item {
 		position: relative;
+
+		.#{$prefix}item-edit-active {
+			border: solid 2px rgb(0, 0, 0);
+			margin: -2px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.3);
+		}
 	}
 
-	.#{$prefix}-grid-item-max {
+	.#{$prefix}-item-max {
 		height: 100%;
 		position: absolute;
 		width: 100%;
@@ -38,6 +48,19 @@ $color-active: #0097ba;
 		margin-right: 10px;
 		margin-top: -1px;
 		padding: 5px;
+	}
+
+	.#{$prefix}-slide-right {
+		animation: slide-right;
+		animation-duration: 1s;
+	}
+	@keyframes slide-right {
+		from {
+			margin-left: -410px;
+		}
+		to {
+			margin-left: 0px;
+		}
 	}
 
 	.#{$prefix}-editing-aside-nav {
@@ -67,7 +90,7 @@ $color-active: #0097ba;
 	.#{$prefix}-form {
 		padding: #{$px-5}px;
 		width: calc(100% - 2*#{$px-5}px);
-		min-height: 292px;
+		min-height: 560px;
 		border-top: solid 1px #fff;
 	}
 	
@@ -84,7 +107,11 @@ $color-active: #0097ba;
 				width: 100%;
 				height: 40px;
 			}
-	
+
+			&.center {
+				justify-content: center;
+			}
+
 			&.backward {
 				justify-content: flex-end;
 			}
@@ -97,7 +124,6 @@ $color-active: #0097ba;
 			button {
 				width: 150px;
 				height: 40px;
-				margin-left: 20px;
 				background-color: rgba(255,255,255,0);
 				border: solid 2px rgb(80, 80, 80);
 	
@@ -119,4 +145,16 @@ $color-active: #0097ba;
 			}
 		}
 	}
+}
+
+.#{$prefix}-mt-10 {
+	margin-top: 10px;
+}
+
+.#{$prefix}-mt-100 {
+	margin-top: 100px;
+}
+
+.#{$prefix}-save-board {
+	margin-top: 160px;
 }

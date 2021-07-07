@@ -8,14 +8,14 @@ export interface BoardConfig {
 
 export interface ItemConfig {
     compName: string;
-    style?: ItemStyle;
+    itemPositionStyle?: ItemPositionStyle;
 }
 
 export interface ItemsConfig {
   [key: string]: ItemConfig;
 }
 
-export interface ItemStyle extends React.CSSProperties {
+export interface ItemPositionStyle extends React.CSSProperties {
   gridColumnStart?: number;
   gridColumnEnd?: number;
   gridRowStart?: number;

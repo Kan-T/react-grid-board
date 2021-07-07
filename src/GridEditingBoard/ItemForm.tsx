@@ -22,15 +22,15 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
 
   const {
     compName = "",
-    style = {}
+    itemPositionStyle = {}
   } = itemConfig;
 
-  const initWidth = style.gridColumnEnd && style.gridColumnStart ? (style.gridColumnEnd - style.gridColumnStart) : 1;
-  const initHeight = style.gridRowEnd && style.gridRowStart ? (style.gridRowEnd - style.gridRowStart) : 1;
+  const initWidth = itemPositionStyle.gridColumnEnd && itemPositionStyle.gridColumnStart ? (itemPositionStyle.gridColumnEnd - itemPositionStyle.gridColumnStart) : 1;
+  const initHeight = itemPositionStyle.gridRowEnd && itemPositionStyle.gridRowStart ? (itemPositionStyle.gridRowEnd - itemPositionStyle.gridRowStart) : 1;
 
   const [componentName, setComponentName] = useState<string>(compName);
-  const [rowStart, setRowStart] = useState<number>(style.gridRowStart || 1);
-  const [colStart, setColStart] = useState<number>(style.gridColumnStart || 1);
+  const [rowStart, setRowStart] = useState<number>(itemPositionStyle.gridRowStart || 1);
+  const [colStart, setColStart] = useState<number>(itemPositionStyle.gridColumnStart || 1);
   const [width, setWidth] = useState<number>(initWidth);
   const [height, setHeight] = useState<number>(initHeight);
 
@@ -41,8 +41,8 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
   useEffect(() => {
     const name = compName || "";
     setComponentName(name);
-    setRowStart((style.gridRowStart || 1));
-    setColStart(style.gridColumnStart || 1);
+    setRowStart((itemPositionStyle.gridRowStart || 1));
+    setColStart(itemPositionStyle.gridColumnStart || 1);
     setWidth(initWidth);
     setHeight(initHeight);
   // Only want to reset when changing the item for editing
@@ -75,8 +75,8 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
     const rowEnd: number = Number(rowStart) + Number(height);
     setItemConfig(itemId, {
       compName: componentName,
-      style: {
-        ...style,
+      itemPositionStyle: {
+        ...itemPositionStyle,
         gridColumnStart: colStart,
         gridColumnEnd: colEnd,
         gridRowStart: rowStart,

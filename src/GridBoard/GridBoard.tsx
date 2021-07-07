@@ -14,6 +14,7 @@ export interface GridBoardProps {
   };
   className?: string;
   isEditing?: boolean;
+  editItemId?: string;
   setEditItemId?: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
@@ -23,6 +24,7 @@ export function GridBoard (props: GridBoardProps): React.ReactElement {
     gridConfig = {},
     components,
     isEditing,
+    editItemId,
     setEditItemId,
     className
   } = props;
@@ -60,9 +62,17 @@ export function GridBoard (props: GridBoardProps): React.ReactElement {
         gap = {gap}
       >
         {itemKeys.map(key => {
-          const {style, compName} = itemsConfig[key];
+          const {itemPositionStyle, compName} = itemsConfig[key];
           return (
-            <Item key={key} id={key} style={style} isEditing={isEditing} isMax={key === maxItemId} setEditItemId={setEditItemId}>
+            <Item
+              key={key}
+              id={key}
+              style={itemPositionStyle}
+              isEditing={isEditing}
+              isActiveEditing={isEditing && key === editItemId}
+              isMax={key === maxItemId}
+              setEditItemId={setEditItemId}
+            >
               {components[compName]?.() || <div></div>}
             </Item>
           );
