@@ -41,6 +41,15 @@ export function GridEditingAside(props: GridEditingAsideProps): React.ReactEleme
 
   const [editType, setEditType] = useState("boardConfig");
 
+  const isNew = () => {
+    if (!editItemId) {
+      return false;
+    }
+    const ids = Object.keys(itemsConfig);
+    const isOld = ids.includes(editItemId);
+    return !isOld;
+  };
+
   const switchEditType = (e: React.MouseEvent<HTMLDivElement>) => {
     const type = e.currentTarget.id;
     setEditType(type);
@@ -61,7 +70,7 @@ export function GridEditingAside(props: GridEditingAsideProps): React.ReactEleme
   };
 
   return (
-    <aside className={`${prefix}-editing-aside`}>
+    <aside className={`${prefix}-editing-aside ${prefix}-slide-right`}>
       <div className={`${prefix}-editing-aside-nav`}>
         <div
           className={classnames(`${prefix}-tab`, {[`${prefix}-tab-active`]: (editType === "boardConfig")})}
@@ -106,13 +115,18 @@ export function GridEditingAside(props: GridEditingAsideProps): React.ReactEleme
       {
         editType === "itemConfig" &&
         <div className={`${prefix}-form`}>
-          <section className="backward">
-            <button
-              onClick={addHandler}
-            >
-              Add new item
-            </button>
-          </section>
+          {
+            isNew() &&
+            <section className={`center ${prefix}-mt-10`}>
+              <span>Add...</span>
+            </section>
+          }
+          {
+            !isNew() && editItemId &&
+            <section className={`center ${prefix}-mt-10`}>
+              <span>Editing...</span>
+            </section>
+          }
           {
             editItemId &&
             <ItemForm
@@ -123,11 +137,22 @@ export function GridEditingAside(props: GridEditingAsideProps): React.ReactEleme
               removeItemConfig={removeItemConfig}
             />
           }
+          {
+            !isNew() &&
+            <section className={`center ${prefix}-mt-100`}>
+              <button
+                className="w-100"
+                onClick={addHandler}
+              >
+                Add new item
+              </button>
+            </section>
+          }
         </div>
       }
 
-      <div className={`${prefix}-container`}>
-        <section className="backward">
+      <div className={`${prefix}-container ${prefix}-mt-100`}>
+        <section>
           <button
             className="w-100"
             onClick={saveConfigHandler}
