@@ -1,12 +1,13 @@
 import React from "react";
-import { ItemStyle } from "./interfaces";
+import { ItemPositionStyle } from "./interfaces";
 import classnames from "classnames";
 const prefix = "grid-board";
 
 export interface ItemProps {
   id?: string;
-  style?: ItemStyle;
+  style?: ItemPositionStyle;
   isEditing?: boolean;
+  isActiveEditing?: boolean;
   isMax?: boolean;
   setEditItemId?: React.Dispatch<React.SetStateAction<string | undefined>>;
   children?: React.ReactNode;
@@ -22,6 +23,7 @@ export function Item (props: ItemProps): React.ReactElement {
     id,
     style,
     isEditing,
+    isActiveEditing,
     isMax,
     setEditItemId,
     children
@@ -41,11 +43,16 @@ export function Item (props: ItemProps): React.ReactElement {
       data-name="item"
       style={itemStyle}
       className={classnames(`${prefix}-grid-item`, {
-        [`${prefix}-grid-edit`]: isEditing,
-        [`${prefix}-grid-item-max`]: isMax
+        [`${prefix}-item-edit`]: isEditing,
+        [`${prefix}-item-max`]: isMax
       })}
       onClick={handleItemClick}
     >
+      <div className={classnames({
+        [`${prefix}item-edit-active`]: isActiveEditing
+      })}
+      >
+      </div>
       {children}
     </section >
   );

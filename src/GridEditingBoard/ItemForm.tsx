@@ -1,7 +1,6 @@
 import React from "react";
 import { ItemConfig, SetItemConfig, RemoveItemConfig } from "../GridBoard/interfaces";
 const { useState, useMemo, useEffect } = React;
-const prefix = "grid-board";
 
 export interface ItemFormProps {
   itemId: string;
@@ -22,16 +21,16 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
   } = props;
 
   const {
-    compName,
-    style = {}
+    compName = "",
+    itemPositionStyle = {}
   } = itemConfig;
 
-  const initWidth = style.gridColumnEnd && style.gridColumnStart ? (style.gridColumnEnd - style.gridColumnStart) : 1;
-  const initHeight = style.gridRowEnd && style.gridRowStart ? (style.gridRowEnd - style.gridRowStart) : 1;
+  const initWidth = itemPositionStyle.gridColumnEnd && itemPositionStyle.gridColumnStart ? (itemPositionStyle.gridColumnEnd - itemPositionStyle.gridColumnStart) : 1;
+  const initHeight = itemPositionStyle.gridRowEnd && itemPositionStyle.gridRowStart ? (itemPositionStyle.gridRowEnd - itemPositionStyle.gridRowStart) : 1;
 
   const [componentName, setComponentName] = useState<string>(compName);
-  const [rowStart, setRowStart] = useState<number>(style.gridRowStart || 1);
-  const [colStart, setColStart] = useState<number>(style.gridColumnStart || 1);
+  const [rowStart, setRowStart] = useState<number>(itemPositionStyle.gridRowStart || 1);
+  const [colStart, setColStart] = useState<number>(itemPositionStyle.gridColumnStart || 1);
   const [width, setWidth] = useState<number>(initWidth);
   const [height, setHeight] = useState<number>(initHeight);
 
@@ -42,8 +41,8 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
   useEffect(() => {
     const name = compName || "";
     setComponentName(name);
-    setRowStart((style.gridRowStart || 1));
-    setColStart(style.gridColumnStart || 1);
+    setRowStart((itemPositionStyle.gridRowStart || 1));
+    setColStart(itemPositionStyle.gridColumnStart || 1);
     setWidth(initWidth);
     setHeight(initHeight);
   // Only want to reset when changing the item for editing
@@ -76,8 +75,8 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
     const rowEnd: number = Number(rowStart) + Number(height);
     setItemConfig(itemId, {
       compName: componentName,
-      style: {
-        ...style,
+      itemPositionStyle: {
+        ...itemPositionStyle,
         gridColumnStart: colStart,
         gridColumnEnd: colEnd,
         gridRowStart: rowStart,
@@ -87,25 +86,17 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
   };
 
   return (
-    <div id="item" className={`${prefix}-form`}>
+    <>
       <section>
-        {/* <Select
-          preValueText="Widget: "
-          options={compOptions}
-          onChange={compChange}
-          value={{
-            label: componentName,
-            value: componentName
-          }}
-        /> */}
         <select
           id="component-select"
-          placeholder="Please select a widget..."
+          value={componentName}
           onChange={compChange}
         >
+          <option value="" disabled style={{display: "none"}}>Please select a widget...</option>
           {
             compOptions.map(name => (
-              <option key={`component-select-option-${name}`} value={name} selected={name === componentName}>name</option>
+              <option key={`component-select-option-${name}`} value={name}>{name}</option>
             ))
           }
         </select>
@@ -130,9 +121,9 @@ export function ItemForm (props: ItemFormProps): React.ReactElement {
         <button
           onClick={saveHandler}
         >
-          Save
+          Save item
         </button>
       </section>
-    </div>
+    </>
   );
 }

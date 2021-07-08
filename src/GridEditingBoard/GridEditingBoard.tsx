@@ -2,8 +2,9 @@ import React from "react";
 import { GridBoard, GridConfig } from "..";
 import { GridEditingAside } from "./GridEditingAside";
 import { useGridConfig } from "../GridBoard/utils";
+import { SetGridConfig } from "../GridBoard/interfaces";
 import "../style";
-const { useState } = React;
+const { useState, useEffect } = React;
 const prefix = "grid-board";
 
 export interface GridEditingBoardProps {
@@ -11,34 +12,49 @@ export interface GridEditingBoardProps {
   components: {
     [key: string]: () => React.ReactElement;
   };
+  setConfig?: SetGridConfig;
+  isEditing?: boolean;
 }
 
 export function GridEditingBoard(props: GridEditingBoardProps): React.ReactElement {
   const {
     initialConfig = {},
-    components
+    components,
+    setConfig,
+    isEditing = false
   } = props;
 
   const [config, , setBoardConfig, setItemConfig, removeItemConfig] = useGridConfig(initialConfig);
   const [editItemId, setEditItemId] = useState<string|undefined>(undefined);
 
+  useEffect(() => {
+    if (!isEditing) {
+      setEditItemId(undefined);
+    }
+  }, [isEditing, setEditItemId]);
+
   return (
     <div className={`${prefix}-grid-editing-board`}>
+      {
+        isEditing &&
+        <GridEditingAside
+          gridConfig={config}
+          editItemId={editItemId}
+          setConfig={setConfig}
+          setBoardConfig={setBoardConfig}
+          setEditItemId={setEditItemId}
+          setItemConfig={setItemConfig}
+          removeItemConfig={removeItemConfig}
+          components={components}
+        />
+      }
       <GridBoard
         gridConfig={config}
         style={{backgroundColor: "rgba(255,255,255,0.1)"}}
         components={components}
-        isEditing
-        setEditItemId={setEditItemId}
-      />
-      <GridEditingAside
-        gridConfig={config}
+        isEditing={isEditing}
         editItemId={editItemId}
         setEditItemId={setEditItemId}
-        setBoardConfig={setBoardConfig}
-        setItemConfig={setItemConfig}
-        removeItemConfig={removeItemConfig}
-        components={components}
       />
     </div>
   );

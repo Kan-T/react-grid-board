@@ -76,7 +76,7 @@ export default function Story(): React.ReactElement {
           // maxItemId: "1623299311750",
           itemsConfig: itemsConfig
         }}
-        style={{backgroundColor:"rgba(255,255,255,0.1)"}}
+        style={{backgroundColor: "rgba(0,0,0,0.1)"}}
         components={components}
         isEditing={isEditing}
       />
