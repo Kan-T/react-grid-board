@@ -1,9 +1,10 @@
 import React from "react";
-import { GridBoard, GridConfig } from "..";
 import { GridEditingAside } from "./GridEditingAside";
 import { useGridConfig } from "../GridBoard/utils";
-import { SetGridConfig } from "../GridBoard/interfaces";
+import { GridConfig, SetGridConfig } from "../GridBoard/interfaces";
 import "../style";
+import { GridBoard } from "../GridBoard/GridBoard";
+
 const { useState, useEffect } = React;
 const prefix = "grid-board";
 

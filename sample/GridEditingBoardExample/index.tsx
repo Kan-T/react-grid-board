@@ -3,6 +3,7 @@ import { GridEditingBoard } from "../../src";
 import Item1 from "../GridBoardExample/item1";
 import Item2 from "../GridBoardExample/item2";
 import Item3 from "../GridBoardExample/item3";
+
 const { useState } = React;
 
 const components = {
