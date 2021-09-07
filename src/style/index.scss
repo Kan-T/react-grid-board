@@ -1,160 +1,157 @@
-$prefix: "grid-board";
-$px-5: "5";
+$prefix: 'grid-board';
+$px-5: '5';
 $color-active: #0097ba;
 
-#grid-board-filer {
-	flex-grow: 1;
-}
-
 .#{$prefix}-grid-board {
-	position: relative;
+  position: relative;
 
-	.#{$prefix}-item-edit {
-		border: solid 1px rgb(175, 175, 175);
-		margin: -1px;
-	}
+  .#{$prefix}-item-edit {
+    border: solid 1px rgb(175, 175, 175);
+    margin: -1px;
+  }
 	
-	.#{$prefix}-grid-item {
-		position: relative;
+  .#{$prefix}-grid-item {
+    position: relative;
 
-		.#{$prefix}item-edit-active {
-			border: solid 2px rgb(0, 0, 0);
-			margin: -2px;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-color: rgba(0, 0, 0, 0.3);
-		}
-	}
+    .#{$prefix}item-edit-active {
+      background-color: rgba(0, 0, 0, 0.3);
+      border: solid 2px rgb(0, 0, 0);
+      height: 100%;
+      left: 0;
+      margin: -2px;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
 
-	.#{$prefix}-item-max {
-		height: 100%;
-		position: absolute;
-		width: 100%;
-	}
+  .#{$prefix}-item-max {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
 }
 
 .#{$prefix}-grid-editing-board {
-	align-items: stretch;
-	display: flex;
-	flex-wrap: nowrap;
+  align-items: stretch;
+  display: flex;
+  flex-wrap: nowrap;
 
-	.#{$prefix}-editing-aside {
-		background-color: rgb(175, 175, 175);
-		flex: 0 0 400px;
-		margin-bottom: -1px;
-		margin-right: 10px;
-		margin-top: -1px;
-		padding: 5px;
-	}
+  .#{$prefix}-editing-aside {
+    background-color: rgb(175, 175, 175);
+    flex: 0 0 400px;
+    margin-bottom: -1px;
+    margin-right: 10px;
+    margin-top: -1px;
+    padding: 5px;
+  }
 
-	.#{$prefix}-slide-right {
-		animation: slide-right;
-		animation-duration: 1s;
-	}
-	@keyframes slide-right {
-		from {
-			margin-left: -410px;
-		}
-		to {
-			margin-left: 0px;
-		}
-	}
+  .#{$prefix}-slide-right {
+    animation: slide-right;
+    animation-duration: 1s;
+  }
+  @keyframes slide-right {
+    from {
+      margin-left: -410px;
+    }
 
-	.#{$prefix}-editing-aside-nav {
-		display: flex;
-		justify-content: space-around;
-		padding: #{$px-5}px;
-		padding-bottom: 0;
-		width: calc(100% - 2*#{$px-5}px);
+    to {
+      margin-left: 0;
+    }
+  }
+
+  .#{$prefix}-editing-aside-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: #{$px-5}px;
+    padding-bottom: 0;
+    width: calc(100% - 2*#{$px-5}px);
 		
-		.#{$prefix}-tab {
-			display: flex;
-			font-weight: 600;
-			justify-content: center;
-			margin-bottom: 0px;
-			padding-bottom: 6px;
-			width: 180px;
-		}
+    .#{$prefix}-tab {
+      display: flex;
+      font-weight: 600;
+      justify-content: center;
+      margin-bottom: 0;
+      padding-bottom: 6px;
+      width: 180px;
+    }
 
-		.#{$prefix}-tab-active {
-			border-bottom: solid 4px #{$color-active};
-			color: #{$color-active};
-			font-weight: 600;
-			width: 180px;
-		}
-	}
+    .#{$prefix}-tab-active {
+      border-bottom: solid 4px #{$color-active};
+      color: #{$color-active};
+      font-weight: 600;
+      width: 180px;
+    }
+  }
+}
 
-	.#{$prefix}-form {
-		padding: #{$px-5}px;
-		width: calc(100% - 2*#{$px-5}px);
-		min-height: 560px;
-		border-top: solid 1px #fff;
-	}
-	
-	.#{$prefix}-form,
-	.#{$prefix}-container {
-		section {
-			align-items: center;
-			display: flex;
-			height: 46px;
-			margin-bottom: 10px;
-			width: 100%;
-	
-			select {
-				width: 100%;
-				height: 40px;
-			}
+.#{$prefix}-form {
+  border-top: solid 1px #fff;
+  min-height: 560px;
+  padding: #{$px-5}px;
+  width: calc(100% - 2*#{$px-5}px);
+}
 
-			&.center {
-				justify-content: center;
-			}
+.#{$prefix}-form,
+.#{$prefix}-container {
+  section {
+    align-items: center;
+    display: flex;
+    height: 46px;
+    margin-bottom: 10px;
+    width: 100%;
 
-			&.backward {
-				justify-content: flex-end;
-			}
-	
-			>label {
-				flex-basis: 195px;
-				margin: 0;
-			}
-	
-			button {
-				width: 150px;
-				height: 40px;
-				background-color: rgba(255,255,255,0);
-				border: solid 2px rgb(80, 80, 80);
-	
-				&:hover {
-					color: #{$color-active};
-					border: solid 2px #{$color-active};
-				}
-	
-				&:active {
-					color: #fff;
-					background-color: #{$color-active};
-					border: solid 2px #fff;
-				}
+    select {
+      height: 40px;
+      width: 100%;
+    }
 
-				&.w-100 {
-					width: 100%;
-					margin: 0;
-				}
-			}
-		}
-	}
+    &.center {
+      justify-content: center;
+    }
+
+    &.backward {
+      justify-content: flex-end;
+    }
+
+    >label {
+      flex-basis: 195px;
+      margin: 0;
+    }
+
+    button {
+      background-color: rgba(255, 255, 255, 0);
+      border: solid 2px rgb(80, 80, 80);
+      height: 40px;
+      width: 150px;
+
+      &:hover {
+        border: solid 2px #{$color-active};
+        color: #{$color-active};
+      }
+
+      &:active {
+        background-color: #{$color-active};
+        border: solid 2px #fff;
+        color: #fff;
+      }
+
+      &.w-100 {
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
 }
 
 .#{$prefix}-mt-10 {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .#{$prefix}-mt-100 {
-	margin-top: 100px;
+  margin-top: 100px;
 }
 
 .#{$prefix}-save-board {
-	margin-top: 160px;
+  margin-top: 160px;
 }
