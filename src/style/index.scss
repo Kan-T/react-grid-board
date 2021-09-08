@@ -1,6 +1,4 @@
-$prefix: 'grid-board';
-$px-5: '5';
-$color-active: #0097ba;
+@import './variables';
 
 .#{$prefix}-grid-board {
   position: relative;

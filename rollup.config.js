@@ -7,7 +7,7 @@ import eslint from "@rollup/plugin-eslint";
 import globals from "rollup-plugin-node-globals"; // React uses process.env.NODE_ENV. This plugin inserts node globals
 import postcss from "rollup-plugin-postcss"; // Process css files. Also need to install postcss.
 import autoprefixer from "autoprefixer";
-import sass from "node-sass";
+import sass from "sass";
 
 export default {
   input: "src/index.ts",
@@ -16,13 +16,6 @@ export default {
     format: "esm"
   },
   plugins: [
-    postcss({
-      plugins: [autoprefixer],
-      extensions: ["css", "scss"],
-      process: (context) => sass.render({
-        file: context
-      })
-    }),
     json(),
     nodeResolve(), //for importing from node_modules
     commonjs(), //Turn CommonJS modules to ES2015 modules
@@ -31,6 +24,13 @@ export default {
     typescript(),
     babel({
       exclude: "node_modules/**" // 只编译我们的源代码
+    }),
+    postcss({
+      plugins: [autoprefixer],
+      extensions: ["css", "scss"],
+      process: (context) => sass.render({
+        file: context
+      })
     })
   ],
   external: []
