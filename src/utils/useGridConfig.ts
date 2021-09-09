@@ -1,5 +1,5 @@
 import React from "react";
-import { GridConfig, BoardConfig, ItemConfig, SetGridConfig, SetBoardConfig, SetItemConfig, RemoveItemConfig } from "../interfaces";
+import { GridConfig, BoardConfig, ItemConfig, SetGridConfig, SetBoardConfig, SetItemConfig, RemoveItemConfig } from "../GridBoard/interfaces";
 // import { get, set } from "lodash";
 import get from "lodash/get";
 import set from "lodash/set";
@@ -23,10 +23,6 @@ export function useGridConfig(initialConfig: GridConfig): [
 
   const setGridConfig = (updateConfig: GridConfig) => {
     setConfig({
-      ...config,
-      ...updateConfig
-    });
-    console.log({
       ...config,
       ...updateConfig
     });

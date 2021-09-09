@@ -1,6 +1,6 @@
 import React from "react";
 import { GridEditingAside } from "./GridEditingAside";
-import { useGridConfig } from "../GridBoard/utils";
+import { useGridConfig } from "../utils";
 import { GridConfig, SetGridConfig } from "../GridBoard/interfaces";
 import "../style";
 import { GridBoard } from "../GridBoard/GridBoard";
