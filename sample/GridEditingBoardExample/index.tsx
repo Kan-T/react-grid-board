@@ -15,7 +15,7 @@ const components = {
 
 export default function Story(): React.ReactElement {
   const config = JSON.parse(sessionStorage.getItem("GridEditingBoardExample_config")) || {};
-  const setConfig = config => {
+  const saveConfig = config => {
     sessionStorage.setItem("GridEditingBoardExample_config", JSON.stringify(config));
   };
 
@@ -43,7 +43,8 @@ export default function Story(): React.ReactElement {
       <GridEditingBoard
         initialConfig={config}
         components={components}
-        setConfig={setConfig}
+        onConfigChange={config => {console.log(config);}}
+        saveConfig={saveConfig}
         isEditing={isEditing}
       />
     </>

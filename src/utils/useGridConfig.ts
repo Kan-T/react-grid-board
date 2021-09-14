@@ -3,9 +3,9 @@ import { GridConfig, BoardConfig, ItemConfig, SetGridConfig, SetBoardConfig, Set
 // import { get, set } from "lodash";
 import get from "lodash/get";
 import set from "lodash/set";
-const { useState } = React;
+const { useState, useEffect } = React;
 
-export function useGridConfig(initialConfig: GridConfig): [
+export function useGridConfig(initialConfig: GridConfig, onConfigChange?: SetGridConfig): [
   GridConfig,
   SetGridConfig,
   SetBoardConfig,
@@ -20,6 +20,12 @@ export function useGridConfig(initialConfig: GridConfig): [
   !get(defaultConfig, "boardConfig.gap") && set(defaultConfig, "boardConfig.gap", 5);
 
   const [config, setConfig] = useState(defaultConfig);
+
+  useEffect(() => {
+    onConfigChange && onConfigChange(config);
+  // Only want to execute when config changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [config]);
 
   const setGridConfig = (updateConfig: GridConfig) => {
     setConfig({
