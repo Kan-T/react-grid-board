@@ -3,3 +3,5 @@ coverage/*
 /public/build/*
 node_modules/*
 **/node_modules/*
+**/*.scss
+**/*.css

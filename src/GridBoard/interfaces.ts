@@ -1,4 +1,4 @@
-export interface BoardConfig {
+interface BoardConfig {
   rows?: number;
   cols?: number;
   itemWidth?: number; //unit is pixel
@@ -6,29 +6,41 @@ export interface BoardConfig {
   gap?: number; //unit is pixel
 }
 
-export interface ItemConfig {
-    compName: string;
-    itemPositionStyle?: ItemPositionStyle;
-}
-
-export interface ItemsConfig {
-  [key: string]: ItemConfig;
-}
-
-export interface ItemPositionStyle extends React.CSSProperties {
+interface ItemPositionStyle extends React.CSSProperties {
   gridColumnStart?: number;
   gridColumnEnd?: number;
   gridRowStart?: number;
   gridRowEnd?: number;
 }
 
-export interface GridConfig {
+interface ItemConfig {
+    compName: string;
+    itemPositionStyle?: ItemPositionStyle;
+}
+
+interface ItemsConfig {
+  [key: string]: ItemConfig;
+}
+
+interface GridConfig {
   boardConfig?: BoardConfig,
   itemsConfig?: ItemsConfig,
   maxItemId?: string;
 }
 
-export type SetGridConfig = ((updateConfig: GridConfig) => void);
-export type SetBoardConfig = ((updateBoardConfig: BoardConfig) => void);
-export type SetItemConfig = ((itemId: string, itemConfig: ItemConfig) => void);
-export type RemoveItemConfig = ((itemId: string) => void);
+type SetGridConfig = ((updateConfig: GridConfig) => void);
+type SetBoardConfig = ((updateBoardConfig: BoardConfig) => void);
+type SetItemConfig = ((itemId: string, itemConfig: ItemConfig) => void);
+type RemoveItemConfig = ((itemId: string) => void);
+
+export {
+  BoardConfig,
+  ItemConfig,
+  ItemsConfig,
+  ItemPositionStyle,
+  GridConfig,
+  SetGridConfig,
+  SetBoardConfig,
+  SetItemConfig,
+  RemoveItemConfig
+};

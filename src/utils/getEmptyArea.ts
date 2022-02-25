@@ -1,4 +1,4 @@
-import { ItemsConfig } from "../interfaces";
+import { ItemsConfig } from "../GridBoard/interfaces";
 
 export function getEmptyArea(total: number, itemsConfig: ItemsConfig): number {
   const itemKeys = Object.keys(itemsConfig);

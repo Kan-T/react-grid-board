@@ -7,7 +7,7 @@ const prefix = "grid-board";
 
 export interface GridEditingAsideProps {
   gridConfig: GridConfig;
-  setConfig?: SetGridConfig;
+  saveConfig?: SetGridConfig;
   setBoardConfig: SetBoardConfig;
   setItemConfig: SetItemConfig;
   removeItemConfig: RemoveItemConfig;
@@ -25,7 +25,7 @@ const emptyItemConfig: ItemConfig = {
 export function GridEditingAside(props: GridEditingAsideProps): React.ReactElement {
   const {
     gridConfig,
-    setConfig,
+    saveConfig,
     setBoardConfig,
     setItemConfig,
     removeItemConfig,
@@ -66,7 +66,7 @@ export function GridEditingAside(props: GridEditingAsideProps): React.ReactEleme
   };
 
   const saveConfigHandler = () => {
-    setConfig && setConfig(gridConfig);
+    saveConfig && saveConfig(gridConfig);
   };
 
   return (

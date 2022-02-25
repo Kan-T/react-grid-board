@@ -8,7 +8,7 @@ const {useState} = React;
 const itemsConfig: ItemsConfig = {
   "1623299311750": {
     compName: "blank1",
-    style: {
+    itemPositionStyle: {
       gridColumnStart: 1,
       gridRowStart: 3,
       gridColumnEnd: 3,
@@ -17,7 +17,7 @@ const itemsConfig: ItemsConfig = {
   },
   "1623299311751": {
     compName: "blank2",
-    style: {
+    itemPositionStyle: {
       gridColumnStart: 1,
       gridRowStart: 1,
       gridColumnEnd: 3,
@@ -26,7 +26,7 @@ const itemsConfig: ItemsConfig = {
   },
   "1623299311752": {
     compName: "blank3",
-    style: {
+    itemPositionStyle: {
       gridColumnStart: 3,
       gridRowStart: 1,
       gridColumnEnd: 6,

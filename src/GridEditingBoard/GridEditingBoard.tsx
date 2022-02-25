@@ -1,9 +1,10 @@
 import React from "react";
-import { GridBoard, GridConfig } from "..";
 import { GridEditingAside } from "./GridEditingAside";
-import { useGridConfig } from "../GridBoard/utils";
-import { SetGridConfig } from "../GridBoard/interfaces";
+import { useGridConfig } from "../utils";
+import { GridConfig, SetGridConfig } from "../GridBoard/interfaces";
 import "../style";
+import { GridBoard } from "../GridBoard/GridBoard";
+
 const { useState, useEffect } = React;
 const prefix = "grid-board";
 
@@ -12,7 +13,8 @@ export interface GridEditingBoardProps {
   components: {
     [key: string]: () => React.ReactElement;
   };
-  setConfig?: SetGridConfig;
+  onConfigChange?: SetGridConfig;
+  saveConfig?: SetGridConfig;
   isEditing?: boolean;
 }
 
@@ -20,11 +22,12 @@ export function GridEditingBoard(props: GridEditingBoardProps): React.ReactEleme
   const {
     initialConfig = {},
     components,
-    setConfig,
+    onConfigChange,
+    saveConfig,
     isEditing = false
   } = props;
 
-  const [config, , setBoardConfig, setItemConfig, removeItemConfig] = useGridConfig(initialConfig);
+  const [config, , setBoardConfig, setItemConfig, removeItemConfig] = useGridConfig(initialConfig, onConfigChange);
   const [editItemId, setEditItemId] = useState<string|undefined>(undefined);
 
   useEffect(() => {
@@ -40,7 +43,7 @@ export function GridEditingBoard(props: GridEditingBoardProps): React.ReactEleme
         <GridEditingAside
           gridConfig={config}
           editItemId={editItemId}
-          setConfig={setConfig}
+          saveConfig={saveConfig}
           setBoardConfig={setBoardConfig}
           setEditItemId={setEditItemId}
           setItemConfig={setItemConfig}

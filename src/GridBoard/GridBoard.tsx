@@ -2,7 +2,7 @@ import React from "react";
 import { GridConfig } from "./interfaces";
 import { Board } from "./Board";
 import { Item } from "./Item";
-import { getEmptyArea } from "./utils";
+import { getEmptyArea } from "../utils";
 import "../style";
 const prefix = "grid-board";
 
